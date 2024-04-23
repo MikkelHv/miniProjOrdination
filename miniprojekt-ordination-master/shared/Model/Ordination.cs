@@ -22,6 +22,7 @@ public abstract class Ordination {
     /// </summary>
     public int antalDage() {
         // TODO: Implement!
+        
         return -1;
     }
 
