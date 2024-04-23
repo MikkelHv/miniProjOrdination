@@ -22,8 +22,33 @@ public class PN : Ordination {
     }
 
     public override double doegnDosis() {
+        //Mikkel
+        //
+        // IKke sikret mod negativ count
     	// TODO: Implement!
-        return -1;
+        double sum = 0;
+        if (dates.Count() > 0)
+        {
+            DateTime min = dates.First().dato;
+            DateTime max = dates.First().dato;
+
+            foreach (Dato d in dates)
+            {
+                if (d.dato < min)
+                {
+                    min = d.dato;
+                }
+                if (d.dato > max)
+                {
+                    max = d.dato;
+                }
+            }
+
+            int dage = (int)(max-min).TotalDays + 1;
+            sum = samletDosis() / dage;
+        }
+        
+        return sum;
     }
 
 

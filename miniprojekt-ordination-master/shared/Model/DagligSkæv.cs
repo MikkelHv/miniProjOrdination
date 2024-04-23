@@ -22,8 +22,20 @@ public class DagligSkæv : Ordination {
 	}
 
 	public override double doegnDosis() {
+		//Mikkel
+		//
+		//Overvej at sikre mod negativ dosis
+		//Overvej at sikre mod maks dosis
 		// TODO: Implement!
-        return -1;
+		// Laves som linkedlist
+		// O(n)
+		double totalDosisSkæv = 0;
+		foreach (Dosis dosis in doser) 
+		{
+			totalDosisSkæv += dosis.antal;
+		}
+
+        return totalDosisSkæv;
 	}
 
 	public override String getType() {

@@ -24,8 +24,20 @@ public class DagligFast : Ordination {
 	}
 
 	public override double doegnDosis() {
+		//Mikkel
+		//
 		// TODO: Implement!
-        return -1;
+		//overvej at lave check på at dosis ikke kan være negativ
+		//overvej at lave check på at vi ikke overskriver max dagsdosis
+		double totalDosisFast = 0; 
+   		 foreach (Dosis dosis in getDoser()) 
+		 {
+        	totalDosisFast += dosis.antal;
+   		 }
+    	return totalDosisFast;
+
+		//O(1)
+        
 	}
 	
 	public Dosis[] getDoser() {
