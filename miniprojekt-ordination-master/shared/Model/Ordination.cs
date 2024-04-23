@@ -22,8 +22,10 @@ public abstract class Ordination {
     /// </summary>
     public int antalDage() {
         // TODO: Implement!
-        
-        return -1;
+        TimeSpan difference = slutDen - startDen;
+        int totalAntalDage = difference.Days +1;
+
+        return totalAntalDage;
     }
 
     public override String ToString() {
