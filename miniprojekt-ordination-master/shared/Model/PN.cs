@@ -8,7 +8,8 @@ public class PN : Ordination {
 		this.antalEnheder = antalEnheder;
 	}
 
-    public PN() : base(null!, new DateTime(), new DateTime()) {
+    public PN() : base(null!, new DateTime(), new DateTime())
+    {
     }
 
     /// <summary>
@@ -16,14 +17,77 @@ public class PN : Ordination {
     /// Returnerer true hvis givesDen er inden for ordinationens gyldighedsperiode og datoen huskes
     /// Returner false ellers og datoen givesDen ignoreres
     /// </summary>
-    public bool givDosis(Dato givesDen) {
-        // TODO: Implement!
+    /*
+    public bool givDosis(Dato givesDen)
+    {
+        double sum = 0;
+        if (dates.Count() > 0)
+        {
+            DateTime min = 
+            DateTime min = dates.First().dato;
+            DateTime max = dates.First().dato;
+
+            foreach (Dato d in dates)
+            {
+                if (d.dato < min && givesDen.dato > min)
+                {
+                    min = d.dato;
+                }
+                if (d.dato > max && givesDen.dato < max)
+                {
+                    max = d.dato;
+                }
+            }
+            dates.Add(givesDen);
+            return true;
+        }
+
         return false;
+    }
+    */
+
+    //Chat løsning nedenfor
+    public bool givDosis(Dato givesDen)
+    {
+        if (dates.Count() > 0) //check at listen ikke er tom
+        {
+            if (givesDen.dato >= startDen.Date && givesDen.dato <= slutDen.Date)
+            {
+                dates.Add(givesDen);
+                return true;
+            }
+        }
+        return false; // Return false if the date is outside the ordination period
     }
 
     public override double doegnDosis() {
+        //Mikkel
+        //
+        // 
     	// TODO: Implement!
-        return -1;
+        double pnDosisSum = 0;
+        if (dates.Count() > 0) //check at listen ikke er tom
+        {
+            DateTime min = dates.First().dato;
+            DateTime max = dates.First().dato;
+
+            foreach (Dato d in dates)
+            {
+                if (d.dato < min)
+                {
+                    min = d.dato;
+                }
+                if (d.dato > max)
+                {
+                    max = d.dato;
+                }
+            }
+
+            int dage = (int)(max-min).TotalDays + 1; //+1 for at sikre den tager både start og slut dag med
+            pnDosisSum = samletDosis() / dage; 
+        }
+        
+        return pnDosisSum;
     }
 
 
