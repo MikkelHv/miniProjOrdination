@@ -17,11 +17,13 @@ public class PN : Ordination {
     /// Returnerer true hvis givesDen er inden for ordinationens gyldighedsperiode og datoen huskes
     /// Returner false ellers og datoen givesDen ignoreres
     /// </summary>
+    /*
     public bool givDosis(Dato givesDen)
     {
         double sum = 0;
         if (dates.Count() > 0)
         {
+            DateTime min = 
             DateTime min = dates.First().dato;
             DateTime max = dates.First().dato;
 
@@ -42,6 +44,21 @@ public class PN : Ordination {
 
         return false;
     }
+    */
+
+    //Chat løsning nedenfor
+    public bool givDosis(Dato givesDen)
+    {
+        if (dates.Count() > 0) //check at listen ikke er tom
+        {
+            if (givesDen.dato >= startDen.Date && givesDen.dato <= slutDen.Date)
+            {
+                dates.Add(givesDen);
+                return true;
+            }
+        }
+        return false; // Return false if the date is outside the ordination period
+    }
 
     public override double doegnDosis() {
         //Mikkel
@@ -49,7 +66,7 @@ public class PN : Ordination {
         // 
     	// TODO: Implement!
         double pnDosisSum = 0;
-        if (dates.Count() > 0) //check mod negativ count
+        if (dates.Count() > 0) //check at listen ikke er tom
         {
             DateTime min = dates.First().dato;
             DateTime max = dates.First().dato;
