@@ -8,7 +8,8 @@ public class PN : Ordination {
 		this.antalEnheder = antalEnheder;
 	}
 
-    public PN() : base(null!, new DateTime(), new DateTime()) {
+    public PN() : base(null!, new DateTime(), new DateTime())
+    {
     }
 
     /// <summary>
@@ -16,18 +17,27 @@ public class PN : Ordination {
     /// Returnerer true hvis givesDen er inden for ordinationens gyldighedsperiode og datoen huskes
     /// Returner false ellers og datoen givesDen ignoreres
     /// </summary>
-    public bool givDosis(Dato givesDen) {
-        // TODO: Implement!
-        return false;
+
+    public bool givDosis(Dato givesDen)
+    {
+        if (dates.Count() > 0) //check at listen ikke er tom
+        {
+            if (givesDen.dato >= startDen.Date && givesDen.dato <= slutDen.Date)
+            {
+                dates.Add(givesDen);
+                return true;
+            }
+        }
+        return false; // Return false if the date is outside the ordination period
     }
 
     public override double doegnDosis() {
         //Mikkel
         //
-        // IKke sikret mod negativ count
+        // 
     	// TODO: Implement!
-        double sum = 0;
-        if (dates.Count() > 0)
+        double pnDosisSum = 0;
+        if (dates.Count() > 0) //check at listen ikke er tom
         {
             DateTime min = dates.First().dato;
             DateTime max = dates.First().dato;
@@ -44,11 +54,11 @@ public class PN : Ordination {
                 }
             }
 
-            int dage = (int)(max-min).TotalDays + 1;
-            sum = samletDosis() / dage;
+            int dage = (int)(max-min).TotalDays + 1; //+1 for at sikre den tager både start og slut dag med
+            pnDosisSum = samletDosis() / dage; 
         }
         
-        return sum;
+        return pnDosisSum;
     }
 
 
