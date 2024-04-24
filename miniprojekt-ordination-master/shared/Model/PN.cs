@@ -17,36 +17,7 @@ public class PN : Ordination {
     /// Returnerer true hvis givesDen er inden for ordinationens gyldighedsperiode og datoen huskes
     /// Returner false ellers og datoen givesDen ignoreres
     /// </summary>
-    /*
-    public bool givDosis(Dato givesDen)
-    {
-        double sum = 0;
-        if (dates.Count() > 0)
-        {
-            DateTime min = 
-            DateTime min = dates.First().dato;
-            DateTime max = dates.First().dato;
 
-            foreach (Dato d in dates)
-            {
-                if (d.dato < min && givesDen.dato > min)
-                {
-                    min = d.dato;
-                }
-                if (d.dato > max && givesDen.dato < max)
-                {
-                    max = d.dato;
-                }
-            }
-            dates.Add(givesDen);
-            return true;
-        }
-
-        return false;
-    }
-    */
-
-    //Chat løsning nedenfor
     public bool givDosis(Dato givesDen)
     {
         if (dates.Count() > 0) //check at listen ikke er tom
