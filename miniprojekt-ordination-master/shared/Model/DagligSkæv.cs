@@ -29,13 +29,13 @@ public class DagligSkæv : Ordination {
 		// TODO: Implement!
 		// Laves som linkedlist
 		// O(n)
-		double totalDosisSkæv = 0;
+		double døgnDosisSkæv = 0;
 		foreach (Dosis dosis in doser) 
 		{
-			totalDosisSkæv += dosis.antal;
+			døgnDosisSkæv += dosis.antal;
 		}
 
-        return totalDosisSkæv;
+        return døgnDosisSkæv;
 	}
 
 	public override String getType() {

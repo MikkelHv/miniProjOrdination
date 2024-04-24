@@ -18,6 +18,7 @@ public class PatientTest
     }
 
 
+    // Fjernes inden aflevering
     [TestMethod]
     public void TestDerAltidFejler()
     {

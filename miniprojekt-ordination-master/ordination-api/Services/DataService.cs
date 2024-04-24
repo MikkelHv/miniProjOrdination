@@ -203,7 +203,7 @@ public class DataService
         }
 
         pn.givDosis(dato);
-
+        db.SaveChanges();
         return "Ordination used";
     }
 
@@ -217,7 +217,8 @@ public class DataService
 	public double GetAnbefaletDosisPerDøgn(int patientId, int laegemiddelId)
     {
         // Edens
-        //
+        //EKSTRA OPGAVE//
+        //LØST SEMI
         //
         var patient = db.Patienter.Find(patientId);
         var laegemiddel = db.Laegemiddler.Find(laegemiddelId);
