@@ -190,17 +190,20 @@ public class DataService
         return null;
     }
 
+
     public string AnvendOrdination(int id, Dato dato) 
     {
         // Edens
         //
         //
-        PN pn = db.PNs.Find(id)!;
+        PN pn = db.PNs.Find(id);
 
-        if (id ==null)
+        
+        if (pn == null)
         {
             throw new ArgumentException("ordination do not exist at this current moment");
         }
+        
 
         pn.givDosis(dato);
         db.SaveChanges();

@@ -29,6 +29,7 @@ public class DagligSkæv : Ordination {
 		// TODO: Implement!
 		// Laves som linkedlist
 		// O(n)
+		if 
 		double døgnDosisSkæv = 0;
 		foreach (Dosis dosis in doser) 
 		{
@@ -41,4 +42,9 @@ public class DagligSkæv : Ordination {
 	public override String getType() {
 		return "DagligSkæv";
 	}
+
+	// Ny konstruktør for to DateTime argumenter
+	// Til at køre test som designet
+    public DagligSkæv(DateTime startDen, DateTime slutDen) : base(null!, startDen, slutDen) {
+    }
 }

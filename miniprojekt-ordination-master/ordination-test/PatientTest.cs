@@ -19,6 +19,7 @@ public class PatientTest
 
 
     // Fjernes inden aflevering
+    /*
     [TestMethod]
     public void TestDerAltidFejler()
     {
@@ -29,4 +30,5 @@ public class PatientTest
         Patient patient = new Patient(cpr, navn, vægt);
         Assert.AreEqual("Egon", patient.navn);
     }
+    */
 }
