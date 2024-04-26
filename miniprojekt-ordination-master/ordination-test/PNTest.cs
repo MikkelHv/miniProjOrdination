@@ -7,27 +7,38 @@ using System.Threading.Tasks;
 
 namespace ordination_test
 {
-    /*
+    
     [TestClass]
     public class PnTest
     {
-        
+        // Test af om 
         //opret et lægemiddel
         Laegemiddel laegemiddel = new Laegemiddel("TestMiddel", 1, 1, 1, "ml");
+
         [TestMethod]
         public void TC1()
         {
-            PN ordination = new PN(DateTime.Now, DateTime.Now.AddDays(7), 2, laegemiddel);
-            ordination.dates.Add
+            PN ordinationPn = new PN(DateTime.Now, DateTime.Now.AddDays(7), 2, laegemiddel);
+            //PN pn1 = new PN(DateTime.Now, DateTime.Now.AddDays(5), 2, laegemiddel); //Dette er jo oprettelsen af en ny ordnidation og ikke en ny anvendelse
+            Dato dato = new Dato {dato = DateTime.Now};
+            
+            //Første anvendelse af ordniation
+            ordinationPn.givDosis(dato);
+            //Test på at der kun er 1 anvendelse
+            double forventetAnvendelser = 1;
+            // Test på at der kun er 1 anvendelse
+            Assert.AreEqual(forventetAnvendelser, ordinationPn.dates.Count());
 
-            double forventetDosis = 2;
-
-            //Assert.AreEqual(forventetDosis, ordination.doegnDosis());
-            Assert.AreEqual(forventetDosis, ordination.dates.Count()); //Jeg rammer ikke den rigtige db så den retunere 0, selvom der er 1 dato i db
+            //Anden anvendelse af ordination
+            ordinationPn.givDosis(dato);
+            //Sætter forventetAnvendelser = 2
+            forventetAnvendelser = 2;
+            // Test på at der nu er 2 anvendelser
+            Assert.AreEqual(forventetAnvendelser, ordinationPn.dates.Count());
         }
         
     }
-    */
+    
     /*
      * chat løsning, virker heller ikke
     [TestClass]

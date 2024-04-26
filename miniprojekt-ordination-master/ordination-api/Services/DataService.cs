@@ -201,7 +201,7 @@ public class DataService
         
         if (pn == null)
         {
-            throw new ArgumentException("ordination do not exist at this current moment");
+            throw new ArgumentNullException("ordination do not exist at this current moment");
         }
         
 

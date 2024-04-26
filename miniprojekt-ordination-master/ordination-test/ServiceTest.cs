@@ -43,15 +43,17 @@ public class ServiceTest
 
     [TestMethod]
     [ExpectedException(typeof(ArgumentNullException))]
-    public void TestAtKodenSmiderEnException() // Der skal smides en exception fra anvend ordination - Hvis pnID == null
+    public void TestAtKodenSmiderEnException_Pn_AnvendOrdination() // Der skal smides en exception fra anvend ordination - Hvis pnID == null
     {
-        // Herunder skal man så kalde noget kode,
-        // der smider en exception.
-
-        // Hvis koden _ikke_ smider en exception,
-        // så fejler testen.
-
-        Console.WriteLine("Her kommer der ikke en exception. Testen fejler.");
+        //Mikkel
+        //
+        //
+        // opretter en id, der ikke findes i databasen
+        int ikkeEksisterendeId = -1;
+        // opretter en vilkårlg dato
+        Dato testDato = new Dato { dato = DateTime.Now };
+        // Test på at der ved kald efter denne id vil blive kastet en exeption
+        service.AnvendOrdination(ikkeEksisterendeId, testDato);
     }
 
     [TestMethod]
