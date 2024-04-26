@@ -20,14 +20,13 @@ public class PN : Ordination {
 
     public bool givDosis(Dato givesDen)
     {
-        if (dates.Count() > 0) //check at listen ikke er tom
-        {
-            if (givesDen.dato >= startDen.Date && givesDen.dato <= slutDen.Date)
+        
+            if (givesDen.dato >= startDen && givesDen.dato <= slutDen)
             {
                 dates.Add(givesDen);
                 return true;
             }
-        }
+        
         return false; // Return false if the date is outside the ordination period
     }
 

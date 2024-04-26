@@ -29,7 +29,6 @@ public class DagligSkæv : Ordination {
 		// TODO: Implement!
 		// Laves som linkedlist
 		// O(n)
-		if 
 		double døgnDosisSkæv = 0;
 		foreach (Dosis dosis in doser) 
 		{
