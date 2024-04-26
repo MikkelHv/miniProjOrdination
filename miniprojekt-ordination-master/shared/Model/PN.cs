@@ -17,7 +17,6 @@ public class PN : Ordination {
     /// Returnerer true hvis givesDen er inden for ordinationens gyldighedsperiode og datoen huskes
     /// Returner false ellers og datoen givesDen ignoreres
     /// </summary>
-
     public bool givDosis(Dato givesDen)
     {
         
@@ -72,4 +71,6 @@ public class PN : Ordination {
 	public override String getType() {
 		return "PN";
 	}
+
+    
 }
