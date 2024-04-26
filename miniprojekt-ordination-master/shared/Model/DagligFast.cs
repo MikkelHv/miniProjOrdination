@@ -9,6 +9,12 @@ public class DagligFast : Ordination {
     public Dosis NatDosis { get; set; } = new Dosis();
 
 	public DagligFast(DateTime startDen, DateTime slutDen, Laegemiddel laegemiddel, double morgenAntal, double middagAntal, double aftenAntal, double natAntal) : base(laegemiddel, startDen, slutDen) {
+        // Victor
+        // IF-statment der sikrer at dosis ikke er negativ
+        if (morgenAntal < 0 || middagAntal < 0 || aftenAntal < 0 || natAntal < 0)
+        {
+            throw new ArgumentException("Antal kan ikke være negativt");
+        }
         MorgenDosis = new Dosis(CreateTimeOnly(6, 0, 0), morgenAntal);
         MiddagDosis = new Dosis(CreateTimeOnly(12, 0, 0), middagAntal);
         AftenDosis = new Dosis(CreateTimeOnly(18, 0, 0), aftenAntal);
