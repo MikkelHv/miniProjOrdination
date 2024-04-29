@@ -41,9 +41,10 @@ public class ServiceTest
         Assert.AreEqual(2, service.GetDagligFaste().Count()); // Tester om den nye dagligfaste er oprettet, derfor tester den ,2.
     }
 
+    // Exception Test PN anvend Ordination
     [TestMethod]
     [ExpectedException(typeof(ArgumentNullException))]
-    public void TestAtKodenSmiderEnException_Pn_AnvendOrdination() // Der skal smides en exception fra anvend ordination - Hvis pnID == null
+    public void TC_KodenSmiderEnException_Pn_AnvendOrdination()
     {
         //Mikkel
         //

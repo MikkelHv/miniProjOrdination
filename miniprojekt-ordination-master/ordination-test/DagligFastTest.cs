@@ -49,7 +49,7 @@ public class DagligFastTeeest
     [TestMethod]
     //Test DognDosis Med Ekstreme Negative Nat Doser
     [ExpectedException(typeof(ArgumentException))]
-    public void TC5()
+    public void TC5_Exception()
     {
         DagligFast ordination = new DagligFast(DateTime.Now, DateTime.Now.AddDays(7), laegemiddel, 0, 0, 0, -10);
         ordination.doegnDosis();
