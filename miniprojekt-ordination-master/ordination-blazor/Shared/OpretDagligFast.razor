@@ -94,13 +94,18 @@
     private DateTime SlutDato { get; set; } = DateTime.Now.AddDays(3);
 
     private async void Opret() {
-        if (Patient == null || laegemiddel == null) {
-            return;
+        if (StartDato <= SlutDato) //Tilføjet fordi vi kan
+        {
+            if (Patient == null || laegemiddel == null)
+            {
+                return;
+            }
+            Console.WriteLine("Opret");
+            await apiService.OpretDagligFast(Patient.id, laegemiddel.LaegemiddelId, antalMorgen, antalMiddag, antalAften, antalNat, StartDato, SlutDato);
+            Console.WriteLine("Oprettet yessir!");
+            onDone?.Invoke($"Oprettet Daglig Fast ordination for {Patient.navn}!");
         }
-        Console.WriteLine("Opret");
-        await apiService.OpretDagligFast(Patient.id, laegemiddel.LaegemiddelId, antalMorgen, antalMiddag, antalAften, antalNat, StartDato, SlutDato);
-        Console.WriteLine("Oprettet!");
-        onDone?.Invoke($"Oprettet Daglig Fast ordination for {Patient.navn}!");
+        else Console.WriteLine("Start dato er efter slut dato");
     }
 
 }

@@ -100,14 +100,19 @@
     private int Antal { get; set; }
 
     private async void Opret() {
-        if (Patient == null || laegemiddel == null) {
-            return;
+        if (StartDato <= SlutDato) //Fordi vi kan
+        {
+            if (Patient == null || laegemiddel == null)
+            {
+                return;
+            }
+            Console.WriteLine("Opret");
+            var ordination = await apiService.OpretDagligSkaev(Patient.id, laegemiddel.LaegemiddelId, doser.ToArray(), StartDato, SlutDato);
+            Console.WriteLine("Oprettet!");
+            Console.WriteLine(ordination);
+            onDone?.Invoke($"Oprettet Daglig Skæv ordination for {Patient.navn}!");
         }
-        Console.WriteLine("Opret");
-        var ordination = await apiService.OpretDagligSkaev(Patient.id, laegemiddel.LaegemiddelId, doser.ToArray(), StartDato, SlutDato);
-        Console.WriteLine("Oprettet!");
-        Console.WriteLine(ordination);
-        onDone?.Invoke($"Oprettet Daglig Skæv ordination for {Patient.navn}!");
+        else Console.WriteLine("Start dato er efter slut dato");
     }
 
     private void OpretDosis() {
