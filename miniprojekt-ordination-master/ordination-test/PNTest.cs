@@ -18,6 +18,9 @@ namespace ordination_test
         [TestMethod]
         public void TC1()
         {
+            // Edens
+            // Mikkel
+            //
             PN ordinationPn = new PN(DateTime.Now, DateTime.Now.AddDays(7), 2, laegemiddel);
             //PN pn1 = new PN(DateTime.Now, DateTime.Now.AddDays(5), 2, laegemiddel); //Dette er jo oprettelsen af en ny ordnidation og ikke en ny anvendelse
             Dato dato = new Dato {dato = DateTime.Now};
