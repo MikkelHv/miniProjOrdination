@@ -158,7 +158,7 @@ public class DataService
     {
         // Edens
 
-        if (startDato <= slutDato) ) // Sikre at der ikke kan blive oprettet en startdato der er senere end en slutdato for en ordination
+        if (startDato <= slutDato) // Sikre at der ikke kan blive oprettet en startdato der er senere end en slutdato for en ordination
         {
             var patient = db.Patienter.Find(patientId);
             var laegemiddel = db.Laegemiddler.Find(laegemiddelId);
