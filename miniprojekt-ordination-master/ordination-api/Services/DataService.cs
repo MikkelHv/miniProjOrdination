@@ -133,20 +133,23 @@ public class DataService
     public PN OpretPN(int patientId, int laegemiddelId, double antal, DateTime startDato, DateTime slutDato)
     {
         //Edens
-        //
-        //
-        var patient = db.Patienter.Find(patientId);
-        var laegemiddel = db.Laegemiddler.Find(laegemiddelId);
 
-        if (patient != null && laegemiddel != null)
+        if (startDato <= slutDato) // Sikre at der ikke kan blive oprettet en startdato der er senere end en slutdato for en ordination
         {
-            var pnOrdination = new PN(startDato, slutDato, antal, laegemiddel);
-            patient.ordinationer.Add(pnOrdination);
-            db.SaveChanges();
-            return pnOrdination;
-        }
+            var patient = db.Patienter.Find(patientId);
+            var laegemiddel = db.Laegemiddler.Find(laegemiddelId);
 
-        return null;  
+            if (patient != null && laegemiddel != null)
+            {
+                var pnOrdination = new PN(startDato, slutDato, antal, laegemiddel);
+                patient.ordinationer.Add(pnOrdination);
+                db.SaveChanges();
+                return pnOrdination;
+            }
+
+            return null;
+        }
+        return null;
     }
 
     public DagligFast OpretDagligFast(int patientId, int laegemiddelId,
@@ -154,39 +157,45 @@ public class DataService
         DateTime startDato, DateTime slutDato)
     {
         // Edens
-        //
-        //
-        var patient = db.Patienter.Find(patientId);
-        var laegemiddel = db.Laegemiddler.Find(laegemiddelId);
 
-        if (patient != null && laegemiddel != null)
+        if (startDato <= slutDato) ) // Sikre at der ikke kan blive oprettet en startdato der er senere end en slutdato for en ordination
         {
-            var dagligFastOrdination = new DagligFast(startDato, slutDato, laegemiddel, antalMorgen, antalMiddag, antalAften, antalNat);
-            patient.ordinationer.Add(dagligFastOrdination);
-            db.SaveChanges();
-            return dagligFastOrdination;
-        }
+            var patient = db.Patienter.Find(patientId);
+            var laegemiddel = db.Laegemiddler.Find(laegemiddelId);
 
+            if (patient != null && laegemiddel != null)
+            {
+                var dagligFastOrdination = new DagligFast(startDato, slutDato, laegemiddel, antalMorgen, antalMiddag, antalAften, antalNat);
+                patient.ordinationer.Add(dagligFastOrdination);
+                db.SaveChanges();
+                return dagligFastOrdination;
+            }
+
+            return null;
+        }
         return null;
     }
 
     public DagligSkæv OpretDagligSkaev(int patientId, int laegemiddelId, Dosis[] doser, DateTime startDato, DateTime slutDato)
     {
         // Edens
-        //
-        //
-        var patient = db.Patienter.Find(patientId);
-        var laegemiddel = db.Laegemiddler.Find(laegemiddelId);
 
-        if (patient != null && laegemiddel != null)
+        if (startDato <= slutDato) // Sikre at der ikke kan blive oprettet en startdato der er senere end en slutdato for en ordination
         {
-            var dagligSkaevOrdination = new DagligSkæv(startDato, slutDato, laegemiddel);
-            dagligSkaevOrdination.doser = doser.ToList();
-            patient.ordinationer.Add(dagligSkaevOrdination);
-            db.SaveChanges();
-            return dagligSkaevOrdination;
-        }
+            var patient = db.Patienter.Find(patientId);
+            var laegemiddel = db.Laegemiddler.Find(laegemiddelId);
 
+            if (patient != null && laegemiddel != null)
+            {
+                var dagligSkaevOrdination = new DagligSkæv(startDato, slutDato, laegemiddel);
+                dagligSkaevOrdination.doser = doser.ToList();
+                patient.ordinationer.Add(dagligSkaevOrdination);
+                db.SaveChanges();
+                return dagligSkaevOrdination;
+            }
+
+            return null;
+        }
         return null;
     }
 
@@ -194,8 +203,7 @@ public class DataService
     public string AnvendOrdination(int id, Dato dato) 
     {
         // Edens
-        //
-        //
+        
         PN pn = db.PNs.Find(id);
 
         
@@ -222,14 +230,14 @@ public class DataService
         // Edens
         //EKSTRA OPGAVE//
         //LØST SEMI
-        //
+        
         var patient = db.Patienter.Find(patientId);
         var laegemiddel = db.Laegemiddler.Find(laegemiddelId);
 
         if (patient != null && laegemiddel != null)
         {
 
-            double anbefaletDosis = patient.vaegt * laegemiddel.enhedPrKgPrDoegnLet;
+            double anbefaletDosis = patient.vaegt * laegemiddel.enhedPrKgPrDoegnNormal;
 
             return anbefaletDosis;
         }

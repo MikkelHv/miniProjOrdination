@@ -31,9 +31,7 @@ public class PN : Ordination {
 
     public override double doegnDosis() {
         //Mikkel
-        //
-        // 
-    	// TODO: Implement!
+        
         double pnDosisSum = 0;
         if (dates.Count() > 0) //check at listen ikke er tom
         {

@@ -22,8 +22,7 @@ public abstract class Ordination {
     /// </summary>
     public int antalDage() {
         //Mikkel
-        //
-        // TODO: Implement!
+        
         TimeSpan difference = slutDen - startDen; //Vi finder antal dage ved at trække start dato fra slutdato,
         int totalAntalDage = difference.Days +1; // ligger 1+ fordi vi skal have begge dage inklusiv
       

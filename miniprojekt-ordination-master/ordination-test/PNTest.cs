@@ -43,13 +43,13 @@ namespace ordination_test
 
             //Test på doegnDosis
             // Der bliver givet 2 dosis per givDosis
-            double forventetDoegnDosis = 4; 
+            double forventetDoegnDosis = 4; // Døgn dosis bliver udregnet fra samletDosis (4) / dage (1)
             Assert.AreEqual(forventetDoegnDosis, ordinationPn.doegnDosis());
 
             //Testgennemsnit over flere dage DoegnDosis
             
             ordinationPn.givDosis(datoOmSyvDage);
-            forventetDoegnDosis = 3;
+            forventetDoegnDosis = 3; // Døgn dosis bliver udregnet fra samletDosis (6) / dage (2)
             Assert.AreEqual(forventetDoegnDosis, ordinationPn.doegnDosis());
 
         }

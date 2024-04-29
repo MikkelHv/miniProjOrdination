@@ -23,12 +23,7 @@ public class DagligSkæv : Ordination {
 
 	public override double doegnDosis() {
 		//Mikkel
-		//
-		//Overvej at sikre mod negativ dosis
-		//Overvej at sikre mod maks dosis
-		// TODO: Implement!
-		// Laves som linkedlist
-		// O(n)
+		
 		double døgnDosisSkæv = 0;
 		foreach (Dosis dosis in doser) 
 		{

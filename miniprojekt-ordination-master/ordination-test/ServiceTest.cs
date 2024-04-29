@@ -124,4 +124,17 @@ public class ServiceTest
 
         Assert.IsTrue(createdDagligFast.startDen <= createdDagligFast.slutDen);
     }
+
+    [TestMethod]
+    public void TC5_AnbefaletDosis()
+    {
+        // Finder patient og lægemiddel i databasen
+        Patient patient = service.GetPatienter().First();
+        Laegemiddel lm = service.GetLaegemidler().First();
+
+        // Opret forventet anbefalet dosis
+        double foreventetAnbefaletDosis = 9.51; // udregnet fra vægten * antalEnhederPrKgPrDoegn
+        // Test
+        Assert.AreEqual(foreventetAnbefaletDosis, service.GetAnbefaletDosisPerDøgn(patient.PatientId, lm.LaegemiddelId));
+    }
 }
